@@ -12,9 +12,9 @@ public interface StudentService {
 
     List<ResponseStudentDTO> getStudents();
 
-    StudentDTO getStudentById(long id);
+    ResponseStudentDTO getStudentById(long id);
 
-    StudentDTO update(long id, StudentDTO studentDTO);
+    ResponseStudentDTO update(long id, StudentDTO studentDTO);
 
-    StudentDTO delete(long id);
+    ResponseStudentDTO delete(long id);
 }

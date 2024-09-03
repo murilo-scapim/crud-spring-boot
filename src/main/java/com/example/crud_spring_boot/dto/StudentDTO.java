@@ -9,7 +9,7 @@ public class StudentDTO {
 
     private Integer age;
 
-    private double grade1;
+    private Double grade1;
 
-    private double grade2;
+    private Double grade2;
 }
