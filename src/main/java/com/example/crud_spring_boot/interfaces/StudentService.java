@@ -11,7 +11,7 @@ public interface StudentService {
 
     ResponseStudentDTO create(StudentDTO studentDTO);
 
-    List<ResponseStudentDTO> getStudents();
+    List<EntityModel<ResponseStudentDTO>> getStudents();
 
     EntityModel<ResponseStudentDTO> getStudentById(long studentId);
 

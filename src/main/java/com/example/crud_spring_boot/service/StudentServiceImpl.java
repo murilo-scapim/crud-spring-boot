@@ -13,6 +13,7 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -45,10 +46,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<ResponseStudentDTO> getStudents() {
+    public List<EntityModel<ResponseStudentDTO>> getStudents() {
         List<Student> students = studentRepository.findAll();
 
-        return responseStudentMapper.toResponseStudentDTOs(students);
+        return students.stream()
+                .map(student -> {
+                    ResponseStudentDTO dto = responseStudentMapper.toResponseStudentDTO(student);
+                    return hateoasHelper.addLinks(dto, student.getId());
+                }).collect(Collectors.toList());
     }
 
     @Override
