@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -57,8 +56,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResponseStudentDTO update(long studentId, StudentDTO studentDTO) {
-        Student student = studentRepository.findById(studentId).orElseThrow(() ->
-                new StudentNotFoundException("Student not found"));
+        Student student = responseStudentMapper.toStudent(getStudentById(studentId));
 
         // Atualiza apenas se for enviado os valores
         if (studentDTO.getFullName() != null) {
