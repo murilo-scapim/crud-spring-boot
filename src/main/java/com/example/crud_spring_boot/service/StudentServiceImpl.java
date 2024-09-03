@@ -41,7 +41,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<ResponseStudentDTO> getStudents() {
-        return null;
+        List<Student> students = studentRepository.findAll();
+
+        return responseStudentMapper.toResponseStudentDTOs(students);
     }
 
     @Override
