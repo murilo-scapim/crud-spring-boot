@@ -30,6 +30,12 @@ public class StudentController {
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
+    @GetMapping("/{studentId}")
+    public ResponseEntity<ResponseStudentDTO> getStudentById(@PathVariable Long studentId) {
+        ResponseStudentDTO student = studentService.getStudentById(studentId);
+        return new ResponseEntity<>(student, HttpStatus.OK);
+    }
+
     @PatchMapping("/{studentId}")
     public ResponseEntity<ResponseStudentDTO> update(@PathVariable Long studentId,
                                                      @RequestBody StudentDTO studentDTO) {
@@ -37,14 +43,3 @@ public class StudentController {
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 }
-
-
-
-
-
-
-
-
-
-
-

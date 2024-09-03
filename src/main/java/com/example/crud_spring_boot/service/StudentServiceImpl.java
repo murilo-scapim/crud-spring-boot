@@ -48,8 +48,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public ResponseStudentDTO getStudentById(long id) {
-        return null;
+    public ResponseStudentDTO getStudentById(long studentId) {
+        Student student = studentRepository.findById(studentId).orElseThrow(() ->
+                new StudentNotFoundException("Student not found"));
+
+        return responseStudentMapper.toResponseStudentDTO(student);
     }
 
     @Override
