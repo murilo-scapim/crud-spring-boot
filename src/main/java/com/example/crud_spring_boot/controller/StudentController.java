@@ -3,7 +3,6 @@ package com.example.crud_spring_boot.controller;
 import com.example.crud_spring_boot.dto.ResponseStudentDTO;
 import com.example.crud_spring_boot.dto.StudentDTO;
 import com.example.crud_spring_boot.interfaces.StudentService;
-import com.example.crud_spring_boot.utils.StudentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +40,11 @@ public class StudentController {
                                                      @RequestBody StudentDTO studentDTO) {
         ResponseStudentDTO student = studentService.update(studentId, studentDTO);
         return new ResponseEntity<>(student, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{studentId}")
+    public ResponseEntity<Void> delete(@PathVariable Long studentId) {
+        studentService.delete(studentId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -20,9 +20,9 @@ public class Student {
 
     private Integer age;
 
-    private double grade1;
+    private Double grade1;
 
-    private double grade2;
+    private Double grade2;
 
-    private double average;
+    private Double average;
 }

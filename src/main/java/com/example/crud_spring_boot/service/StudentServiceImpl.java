@@ -87,8 +87,10 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public ResponseStudentDTO delete(long id) {
-        return null;
+    public void delete(long studentId) {
+        getStudentById(studentId);
+
+        studentRepository.deleteById(studentId);
     }
 
     public double calculateAverage(double grade1, double grade2) {

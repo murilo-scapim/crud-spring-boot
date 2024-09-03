@@ -2,7 +2,6 @@ package com.example.crud_spring_boot.interfaces;
 
 import com.example.crud_spring_boot.dto.ResponseStudentDTO;
 import com.example.crud_spring_boot.dto.StudentDTO;
-import com.example.crud_spring_boot.entity.Student;
 
 import java.util.List;
 
@@ -12,9 +11,9 @@ public interface StudentService {
 
     List<ResponseStudentDTO> getStudents();
 
-    ResponseStudentDTO getStudentById(long id);
+    ResponseStudentDTO getStudentById(long studentId);
 
-    ResponseStudentDTO update(long id, StudentDTO studentDTO);
+    ResponseStudentDTO update(long studentId, StudentDTO studentDTO);
 
-    ResponseStudentDTO delete(long id);
+    void delete(long studentId);
 }
