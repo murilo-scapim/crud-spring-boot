@@ -4,6 +4,7 @@ import com.example.crud_spring_boot.dto.ResponseStudentDTO;
 import com.example.crud_spring_boot.dto.StudentDTO;
 import com.example.crud_spring_boot.interfaces.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("api/v1/students")
 public class StudentController {
 
     @Autowired
@@ -30,8 +31,9 @@ public class StudentController {
     }
 
     @GetMapping("/{studentId}")
-    public ResponseEntity<ResponseStudentDTO> getStudentById(@PathVariable Long studentId) {
-        ResponseStudentDTO student = studentService.getStudentById(studentId);
+    public ResponseEntity<EntityModel<ResponseStudentDTO>>getStudentById(
+            @PathVariable Long studentId) {
+        EntityModel<ResponseStudentDTO> student = studentService.getStudentById(studentId);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 

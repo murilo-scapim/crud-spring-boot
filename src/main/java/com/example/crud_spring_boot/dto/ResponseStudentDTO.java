@@ -1,6 +1,8 @@
 package com.example.crud_spring_boot.dto;
 
 import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 @Data
 public class ResponseStudentDTO {

@@ -6,8 +6,10 @@ import com.example.crud_spring_boot.entity.Student;
 import com.example.crud_spring_boot.interfaces.ResponseStudentMapper;
 import com.example.crud_spring_boot.interfaces.StudentService;
 import com.example.crud_spring_boot.repository.StudentRepository;
+import com.example.crud_spring_boot.utils.HateoasHelper;
 import com.example.crud_spring_boot.utils.StudentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private ResponseStudentMapper responseStudentMapper;
+
+    @Autowired
+    private HateoasHelper hateoasHelper;
 
     @Override
     public ResponseStudentDTO create(StudentDTO studentDTO) {
@@ -47,16 +52,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public ResponseStudentDTO getStudentById(long studentId) {
+    public EntityModel<ResponseStudentDTO> getStudentById(long studentId) {
         Student student = studentRepository.findById(studentId).orElseThrow(() ->
                 new StudentNotFoundException("Student not found"));
 
-        return responseStudentMapper.toResponseStudentDTO(student);
+        ResponseStudentDTO responseStudentDTO = responseStudentMapper.toResponseStudentDTO(student);
+        return hateoasHelper.addLinks(responseStudentDTO, studentId);
     }
 
     @Override
     public ResponseStudentDTO update(long studentId, StudentDTO studentDTO) {
-        Student student = responseStudentMapper.toStudent(getStudentById(studentId));
+        Student student = studentRepository.findById(studentId).orElseThrow(() ->
+                new StudentNotFoundException("Student not found"));
 
         // Atualiza apenas se for enviado os valores
         if (studentDTO.getFullName() != null) {

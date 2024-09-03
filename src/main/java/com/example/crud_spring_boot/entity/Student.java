@@ -2,14 +2,14 @@ package com.example.crud_spring_boot.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "students")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class Student {
 
     @Id
