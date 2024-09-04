@@ -15,7 +15,7 @@ public interface StudentService {
 
     EntityModel<ResponseStudentDTO> getStudentById(long studentId);
 
-    ResponseStudentDTO update(long studentId, StudentDTO studentDTO);
+    EntityModel<ResponseStudentDTO> update(long studentId, StudentDTO studentDTO);
 
     void delete(long studentId);
 }

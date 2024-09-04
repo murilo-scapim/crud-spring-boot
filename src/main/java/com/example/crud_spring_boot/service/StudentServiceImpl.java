@@ -68,7 +68,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public ResponseStudentDTO update(long studentId, StudentDTO studentDTO) {
+    public EntityModel<ResponseStudentDTO> update(long studentId, StudentDTO studentDTO) {
         Student student = studentRepository.findById(studentId).orElseThrow(() ->
                 new StudentNotFoundException("Student not found"));
 
@@ -97,7 +97,9 @@ public class StudentServiceImpl implements StudentService {
 
         Student studentSaved = studentRepository.save(student);
 
-        return responseStudentMapper.toResponseStudentDTO(studentSaved);
+        ResponseStudentDTO responseStudentDTO = responseStudentMapper
+                .toResponseStudentDTO(studentSaved);
+        return hateoasHelper.addLinks(responseStudentDTO, studentSaved.getId());
     }
 
     @Override
