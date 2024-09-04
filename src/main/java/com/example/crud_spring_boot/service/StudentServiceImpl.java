@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService {
     private HateoasHelper hateoasHelper;
 
     @Override
-    public ResponseStudentDTO create(StudentDTO studentDTO) {
+    public EntityModel<ResponseStudentDTO> create(StudentDTO studentDTO) {
         double average = calculateAverage(studentDTO.getGrade1(),
                 studentDTO.getGrade2());
 
@@ -42,7 +42,9 @@ public class StudentServiceImpl implements StudentService {
 
         Student studentSaved = studentRepository.save(student);
 
-        return responseStudentMapper.toResponseStudentDTO(studentSaved);
+        ResponseStudentDTO responseStudentDTO = responseStudentMapper
+                .toResponseStudentDTO(studentSaved);
+        return hateoasHelper.addLinks(responseStudentDTO, studentSaved.getId());
     }
 
     @Override

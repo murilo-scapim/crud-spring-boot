@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface StudentService {
 
-    ResponseStudentDTO create(StudentDTO studentDTO);
+    EntityModel<ResponseStudentDTO> create(StudentDTO studentDTO);
 
     List<EntityModel<ResponseStudentDTO>> getStudents();
 
