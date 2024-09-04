@@ -11,6 +11,7 @@ Implementa nível 3 de maturidade REST, utilizando Hateoas nos recursos.
 #### Requisitos:
 
 - Docker e Docker Compose instalados.
+- JDK 17
 
 
 Abra um terminal na raiz do projeto e execute o comando: `docker compose up -d`.
