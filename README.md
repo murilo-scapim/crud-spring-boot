@@ -10,15 +10,16 @@ Implementa nível 3 de maturidade REST, utilizando Hateoas nos recursos.
 
 #### Requisitos:
 
-- Docker e Docker compose instalados.
+- Docker e Docker Compose instalados.
 
 
-- Abra um terminal na raiz do projeto e execute o comando: `docker compose up -d`.
+Abra um terminal na raiz do projeto e execute o comando: `docker compose up -d`.
   
 
-Dois serviços serão criados:
-- um para o banco de dados MySQL;
-- e outro com a API já disponível para receber requisições.
+Será criado um serviço para o banco de dados MySQL.
+
+Após, a aplicação poderá ser executada na IDE.
+
 
 
 ## Endpoints
