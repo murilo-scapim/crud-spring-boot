@@ -4,7 +4,6 @@ import com.example.crud_spring_boot.dto.ResponseStudentDTO;
 import com.example.crud_spring_boot.dto.StudentDTO;
 import org.springframework.hateoas.EntityModel;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 public interface StudentService {
